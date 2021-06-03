@@ -1,20 +1,14 @@
 <template>
-  <div v-if="previewChartData.name || generatingChartPreview">
+  <div class="full-height" v-if="previewChartData.name || generatingChartPreview">
     <ChartWrapper v-bind:chart="previewChartData" />
+    <q-inner-loading :showing="generatingChartPreview">
+      <q-spinner-facebook size="50px" color="primary" />
+    </q-inner-loading>
   </div>
-  <div v-else>
-    <q-card>
-      <q-card-section>
-        <div class="row items-center no-wrap">
-          <div class="col">
-            <div class="text-h6">Nothing to show here</div>
-          </div>
-        </div>
-      </q-card-section>
-      <q-inner-loading :showing="generatingChartPreview">
-        <q-spinner-gears size="50px" color="primary" />
-      </q-inner-loading>
-    </q-card>
+  <div v-else class="row justify-center full-height full-width">
+    <div class="col">
+      <div class="text-h6">Nothing to show here</div>
+    </div>
   </div>
 </template>
 

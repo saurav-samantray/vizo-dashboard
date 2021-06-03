@@ -49,11 +49,17 @@ const getters = {
 };
 
 const actions = {
-  async [GENERATE_CHART_PREVIEW]({ commit }, payload) {
+  async [GENERATE_CHART_PREVIEW]({ commit }, { payload: payload, type: type }) {
     console.log('GENERATE_CHART_PREVIEW: ', payload);
     commit(GENERATE_CHART_PREVIEW);
     try {
-      const data = await ChartService.previewPieChart(payload);
+      let data;
+
+      if (type === 'preview') {
+        data = await ChartService.previewPieChart(payload);
+      } else if (type === 'saved') {
+        data = await ChartService.getPieChartData(payload);
+      }
       console.log('API success');
       commit(GENERATE_CHART_PREVIEW_SUCCESS, {
         data: data

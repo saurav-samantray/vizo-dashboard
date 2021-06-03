@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-  publicPath: '/dashblocks-template/',
+  publicPath: '/',
 
   configureWebpack: {
     plugins: [

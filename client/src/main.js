@@ -71,7 +71,7 @@ Vue.use(DashBlocks, {
 */
 
 // Dashblocks CSS
-import 'dashblocks/dist/dashblocks.css';
+//import 'dashblocks/dist/dashblocks.css';
 import './quasar';
 import ApiService from './services/api.service';
 

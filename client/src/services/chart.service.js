@@ -20,9 +20,9 @@ const ChartService = {
       throw new ChartError(e.response.status, e.response.data.error);
     }
   },
-  getPieChart: async function() {
+  getPieChartData: async function(id) {
     try {
-      const response = await ApiService.get('/pie');
+      const response = await ApiService.get('/api/charts/pie/' + id);
       //console.log(response)
       return response.data;
     } catch (e) {

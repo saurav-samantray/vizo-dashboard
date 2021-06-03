@@ -96,7 +96,7 @@ export default {
     },
     preview() {
       console.log('Preview Chart in right hand panel');
-      this.GENERATE_CHART_PREVIEW(this.formData());
+      this.GENERATE_CHART_PREVIEW({ payload: this.formData(), type: 'preview' });
     }
   },
 

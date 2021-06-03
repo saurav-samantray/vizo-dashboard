@@ -44,8 +44,7 @@ public class ChartController {
     }
 
     @PostMapping("pie/preview")
-    public ResponseEntity<PieChartDataResponse> previewPie(@RequestBody Pie pie) throws DataSourceNotFoundException, InterruptedException {
-        Thread.sleep(4000);
+    public ResponseEntity<PieChartDataResponse> previewPie(@RequestBody Pie pie) throws DataSourceNotFoundException{
         return new ResponseEntity<>(chartDataService.previewPie(pie),HttpStatus.OK);
     }
 }

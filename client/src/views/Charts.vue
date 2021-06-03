@@ -1,21 +1,22 @@
 <template>
   <q-page class="ub-page">
     <div class="row justify-between">
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-12 full-height">
         <AddChart :availableDashboards="availableDashboards" />
       </div>
-      <div class="col-md-8 q-pl-md">
-        <div class="row justify-between">
-          <div class="col-md-12">
+
+      <q-card class="col-md-8 q-pl-md col-sm-12">
+        <div class="row justify-center">
+          <div class="col-md-12 col-sm-12">
             <ChartPreviewHeader :availableCharts="availableCharts" />
           </div>
         </div>
-        <div class="row justify-between">
-          <div class="col-md-12">
+        <div class="row justify-center">
+          <div class="col-md-12 col-sm-12">
             <ChartPreview />
           </div>
         </div>
-      </div>
+      </q-card>
     </div>
   </q-page>
 </template>

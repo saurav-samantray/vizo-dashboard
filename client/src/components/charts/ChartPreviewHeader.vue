@@ -2,7 +2,7 @@
   <div>
     <q-toolbar>
       <q-toolbar-title>
-        <div class="text-h5">Chart</div>
+        <div class="text-h5">Preview</div>
       </q-toolbar-title>
       <q-space />
       <q-select class="col-grow" v-model="selectedChart" :options="availableCharts" label="Available Charts" />
@@ -15,10 +15,26 @@
 
 <script>
 //import AddDatasource from './AddDatasource';
+import { mapActions } from 'vuex';
+import { GENERATE_CHART_PREVIEW } from '@/store/actions';
 
 export default {
   name: 'ChartPreviewHeader',
-  methods: {},
+  methods: {
+    ...mapActions([GENERATE_CHART_PREVIEW]),
+    formData() {
+      const data = {
+        name: this.selectedChart.name,
+        field: this.selectedChart.field,
+        datasourceId: this.selectedChart.datasourceId
+      };
+      return data;
+    },
+    preview(id) {
+      console.log('Preview Chart in right hand panel');
+      this.GENERATE_CHART_PREVIEW({ payload: id, type: 'saved' });
+    }
+  },
   props: ['availableCharts'],
   data() {
     return {
@@ -28,6 +44,11 @@ export default {
   },
   components: {
     //AddDatasource
+  },
+  watch: {
+    selectedChart: async function(val) {
+      this.preview(val.value);
+    }
   }
 };
 </script>

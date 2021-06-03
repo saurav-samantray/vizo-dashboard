@@ -130,9 +130,9 @@ export default {
           format: val => `${val}`,
           sortable: true
         },
-        { name: 'connectionDetails', align: 'left', label: 'Type', field: 'type', sortable: true },
-        { name: 'databaseName', align: 'left', label: 'Type', field: 'type', sortable: true },
-        { name: 'collection', align: 'left', label: 'Type', field: 'type', sortable: true },
+        { name: 'connectionDetails', align: 'left', label: 'Connection', field: 'connectionDetails', sortable: true },
+        { name: 'databaseName', align: 'left', label: 'Database', field: 'databaseName', sortable: true },
+        { name: 'collection', align: 'left', label: 'Collection/Table', field: 'collection', sortable: true },
         { name: 'type', align: 'left', label: 'Type', field: 'type', sortable: true },
         { name: 'connected', align: 'center', label: 'Connected', field: 'connected', sortable: true },
         { name: 'actions', align: 'center', label: 'Actions', field: 'actions' }

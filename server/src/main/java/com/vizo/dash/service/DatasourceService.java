@@ -1,5 +1,6 @@
 package com.vizo.dash.service;
 
+import com.vizo.dash.config.DataSourceUtilityRegistry;
 import com.vizo.dash.exception.DataSourceNotFoundException;
 import com.vizo.dash.model.DataSource;
 import com.vizo.dash.model.User;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -24,6 +26,9 @@ public class DatasourceService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    DataSourceUtilityRegistry utilityRegistry;
 
     public List<DataSource> listAll() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -47,13 +52,13 @@ public class DatasourceService {
         return repo.findById(id).orElseThrow(() -> new DataSourceNotFoundException());
     }
 
-    public List<String> getkeys(Long id){
-        List<String> keys = new ArrayList<>();
-        keys.add("clickType");
-        keys.add("userName");
-        //DataSource datasource = repo.findById(id).get();
-
-        return keys;
+    public Set<String> getkeys(Long id) throws DataSourceNotFoundException {
+        DataSource ds = get(id);
+//        List<String> keys = new ArrayList<>();
+//        keys.add("clickType");
+//        keys.add("userName");
+//        //DataSource datasource = repo.findById(id).get();
+        return  utilityRegistry.getService(ds.getType().toString()).keys(ds);
     }
 
     public void delete(long id) {

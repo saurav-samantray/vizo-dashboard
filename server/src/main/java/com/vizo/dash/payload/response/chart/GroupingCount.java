@@ -11,5 +11,5 @@ import lombok.ToString;
 @ToString
 public class GroupingCount {
     private String name;
-    private int value;
+    private long value;
 }

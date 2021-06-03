@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin(maxAge = 3600)
 @RestController
@@ -43,8 +44,8 @@ public class DataSourceController {
     }
 
     @GetMapping("/{id}/keys")
-    public ResponseEntity<List> fetchCollectionKeys(@PathVariable long id) {
-        return new ResponseEntity<List>(service.getkeys(id),HttpStatus.OK);
+    public ResponseEntity<Set> fetchCollectionKeys(@PathVariable long id) throws DataSourceNotFoundException {
+        return new ResponseEntity<>(service.getkeys(id),HttpStatus.OK);
     }
 
     @GetMapping("/types")

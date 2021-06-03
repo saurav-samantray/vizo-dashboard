@@ -20,9 +20,9 @@ const DashboardService = {
       throw new ChartError(e.response.status, e.response.data.error);
     }
   },
-  create: async function(payload) {
+  save: async function(payload) {
     try {
-      const response = await ApiService.post('/api/dashboards',payload);
+      const response = await ApiService.post('/api/dashboards', payload);
       //console.log(response)
       return response.data;
     } catch (e) {

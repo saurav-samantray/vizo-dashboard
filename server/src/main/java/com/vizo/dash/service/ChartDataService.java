@@ -1,6 +1,6 @@
 package com.vizo.dash.service;
 
-import com.vizo.dash.MongoDBUtils;
+import com.vizo.dash.config.DataSourceUtilityRegistry;
 import com.vizo.dash.exception.ChartNotFoundException;
 import com.vizo.dash.exception.DataSourceNotFoundException;
 import com.vizo.dash.model.DataSource;
@@ -19,17 +19,27 @@ public class ChartDataService {
     ChartService chartService;
 
     @Autowired
-    MongoDBUtils utils;
+    DataSourceUtilityRegistry registry;
 
     public PieChartDataResponse generatePieChart(long id) throws DataSourceNotFoundException, ChartNotFoundException {
         PieChart pc = chartService.findPie(id);
-        DataSource ds = pc.getDatasource();
-        return utils.performSingleAggregation(ds.getConnectionDetails(),ds.getDatabaseName(),ds.getCollection(),pc.getField());
+        //DataSource ds = pc.getDatasource();
+        return  registry
+                    .getService(pc.getDatasource().getType().toString())
+                    .generatePieChartData(pc);
+        //return utils.performSingleAggregation(ds.getConnectionDetails(),ds.getDatabaseName(),ds.getCollection(),pc.getField());
 
     }
 
     public PieChartDataResponse previewPie(Pie pie) throws DataSourceNotFoundException{
         DataSource ds = dsService.get(pie.getDatasourceId());
-        return utils.performSingleAggregation(ds.getConnectionDetails(),ds.getDatabaseName(),ds.getCollection(),pie.getField());
+        PieChart pc = new PieChart();
+        pc.setName(pie.getName());
+        pc.setField(pie.getField());
+        pc.setDatasource(ds);
+        return  registry
+                .getService(pc.getDatasource().getType().toString())
+                .generatePieChartData(pc);
+        //return utils.performSingleAggregation(ds.getConnectionDetails(),ds.getDatabaseName(),ds.getCollection(),pie.getField());
     }
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "clickType": "AddToCart",
+    "userName": "Saurav"
+  },
+  {
+    "clickType": "AddToCart",
+    "userName": "Saurav"
+  },
+  {
+    "clickType": "AddToCart",
+    "userName": "Samantray"
+  },
+  {
+    "clickType": "AddToCart",
+    "userName": "Samantray"
+  },
+  {
+    "clickType": "Quick View",
+    "userName": "Saurav"
+  },
+  {
+    "clickType": "Quick View",
+    "userName": "Samantray"
+  },
+  {
+    "clickType": "Quick View",
+    "userName": "Samantray"
+  },
+  {
+    "clickType": "Place Order",
+    "userName": "Saurav"
+  },
+  {
+    "clickType": "Place Order",
+    "userName": "Samantray"
+  }
+]

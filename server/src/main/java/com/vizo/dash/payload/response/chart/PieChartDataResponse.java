@@ -13,6 +13,7 @@ import java.util.List;
 public class PieChartDataResponse {
     private String id="Pie";
     private String name="Pie";
+    private String type="Pie";
     private Option option = new Option();
     //private List<GroupingCount> data = new ArrayList<>();
 
