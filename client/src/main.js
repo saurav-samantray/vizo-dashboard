@@ -32,6 +32,10 @@ import {
   DbDygraphsDateTimeHistogram
 } from 'dashblocks';
 
+import {QueryRule} from './components/queryBuilder/QueryRule'
+
+Vue.component('query-rule', QueryRule)
+
 Vue.use(DashBlocks, {
   components: {
     DbDashboard,

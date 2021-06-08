@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import MainLayout from './layouts/mainlayout.vue';
 import Home from './views/Home.vue';
 import About from './views/About.vue';
+import QueryBuilder from './views/QueryBuilder.vue';
 import DashblocksShowcase from './views/DashblocksShowcase.vue';
 import Dashboards from './views/Dashboards.vue';
 import Charts from './views/Charts.vue';
@@ -160,7 +161,14 @@ const router = new Router({
         public: true
       },
       beforeEnter: ifNotAuthenticated
-    }
+    },
+    {
+      path: '/qb',
+      component: QueryBuilder,
+      meta: {
+        public: true
+      }
+    },
   ]
 });
 
